@@ -303,11 +303,851 @@
 
   <script>
     const crimes = [
-      // Array completo de crimes mantido igual ao original (152 crimes)
-      { n: "0.1", crime: "Azaralhamento", sentencaFixa: 100, multa: 100000, fianca: 130000, descricao: "Quando alguém está bagunçando no recrutamento." },
-      { n: "0.2", crime: "Prisão Militar", sentencaFixa: 100, multa: 0, fianca: 0, descricao: "Quando um oficial da lei deixa de cumprir uma ordem direta ou age fora das condutas éticas e morais de sua função." },
-      // ... (todos os outros crimes do arquivo original)
-      { n: "16.6", crime: "Zaralho em Recrutamento Policial", sentencaFixa: 0, multa: 100000, fianca: 0, descricao: "Realizar brincadeiras, agir de má-fé e participar de concurso público policial apenas para atrapalhar." }
+      // 0.x - CRIMES
+      {
+        n: "0.1",
+        crime: "Azaralhamento",
+        sentencaFixa: 100,
+        multa: 100000,
+        fianca: 130000,
+        descricao: "Quando alguém está bagunçando no recrutamento."
+      },
+      {
+        n: "0.2",
+        crime: "Prisão Militar",
+        sentencaFixa: 100,
+        multa: 0,
+        fianca: 0,
+        descricao: "Quando um oficial da lei deixa de cumprir uma ordem direta ou age fora das condutas éticas e morais de sua função."
+      },
+      {
+        n: "0.3",
+        crime: "Prevaricação",
+        sentencaFixa: 100,
+        multa: 100000,
+        fianca: 0,
+        descricao: "Crime praticado por funcionário público contra a administração em geral, retardando ou deixando de praticar ato de ofício para satisfazer interesse ou sentimento pessoal."
+      },
+      {
+        n: "0.4",
+        crime: "Invasão de departamento policial",
+        sentencaFixa: 100,
+        multa: 100000,
+        fianca: 200000,
+        descricao: "Ato de invadir uma área policial ou departamento sem autorização de algum oficial em serviço."
+      },
+
+      // 1.x - CRIMES CONTRA A VIDA
+      {
+        n: "1.1",
+        crime: "Homicídio Doloso Qualificado",
+        sentencaFixa: 40,
+        multa: 150000,
+        fianca: 0,
+        descricao: "Quando uma pessoa toma qualquer ação premeditada para causar intencionalmente a morte de outra pessoa, com circunstâncias qualificadoras."
+      },
+      {
+        n: "1.2",
+        crime: "Homicídio Doloso",
+        sentencaFixa: 40,
+        multa: 150000,
+        fianca: 0,
+        descricao: "Quando uma pessoa toma qualquer ação premeditada para causar intencionalmente a morte de outra pessoa."
+      },
+      {
+        n: "1.3",
+        crime: "Tentativa de Homicídio",
+        sentencaFixa: 40,
+        multa: 150000,
+        fianca: 0,
+        descricao: "Quando uma pessoa toma alguma ação deliberada e maliciosa para causar a morte de outra pessoa e não tem sucesso."
+      },
+      {
+        n: "1.4",
+        crime: "Homicídio Culposo",
+        sentencaFixa: 40,
+        multa: 100000,
+        fianca: 0,
+        descricao: "Morte causada pela ação do acusado sem intenção de matar."
+      },
+      {
+        n: "1.5",
+        crime: "Homicídio Culposo no Trânsito",
+        sentencaFixa: 30,
+        multa: 100000,
+        fianca: 250000,
+        descricao: "Morte causada pela condução imprudente do acusado sem intenção de matar."
+      },
+
+      // 2.x - CRIMES VIOLENTOS
+      {
+        n: "2.1",
+        crime: "Lesão corporal",
+        sentencaFixa: 40,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Causar danos significativos a outra pessoa por meio de toque intencional ofensivo ou prejudicial sem consentimento. Aplica-se apenas se o indivíduo estiver incapacitado (derrubado)."
+      },
+      {
+        n: "2.2",
+        crime: "Sequestro",
+        sentencaFixa: 50,
+        multa: 200000,
+        fianca: 0,
+        descricao: "Aprender e levar ilegalmente uma pessoa pela força ou fraude, ou detê-la contra a sua vontade com intenção de levá-la embora mais tarde."
+      },
+      {
+        n: "2.3",
+        crime: "Cárcere Privado",
+        sentencaFixa: 50,
+        multa: 200000,
+        fianca: 0,
+        descricao: "Deter ou prender alguém indevidamente e contra sua vontade, restringindo sua liberdade a um pequeno espaço físico."
+      },
+
+      // 3.x - CRIMES CONTRA O PATRIMÔNIO
+      {
+        n: "3.1",
+        crime: "Furto",
+        sentencaFixa: 35,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Subtrair, para si ou para outrem, coisa alheia móvel."
+      },
+      {
+        n: "3.2",
+        crime: "Receptação de Veículos",
+        sentencaFixa: 35,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Posse de qualquer veículo roubado consigo."
+      },
+      {
+        n: "3.3",
+        crime: "Tentativa de Furto",
+        sentencaFixa: 10,
+        multa: 30000,
+        fianca: 50000,
+        descricao: "Tentar subtrair, para si ou para outrem, coisa alheia móvel, mas por circunstâncias alheias ao agente o crime não se consuma."
+      },
+      {
+        n: "3.4",
+        crime: "Furto de Veículos",
+        sentencaFixa: 15,
+        multa: 40000,
+        fianca: 55000,
+        descricao: "Subtrair, para si ou para outrem, veículos."
+      },
+      {
+        n: "3.5",
+        crime: "Invasão de Propriedade",
+        sentencaFixa: 15,
+        multa: 40000,
+        fianca: 55000,
+        descricao: "Entrar ou permanecer na casa de alguém contra sua vontade."
+      },
+      {
+        n: "3.6",
+        crime: "Apropriação indébita",
+        sentencaFixa: 30,
+        multa: 40000,
+        fianca: 55000,
+        descricao: "Apropriar-se de coisa alheia móvel cuja posse foi conferida de forma lícita, desviando-a em benefício próprio."
+      },
+
+      // 4.x - ROUBOS E EXTORSÃO
+      {
+        n: "4.1",
+        crime: "Roubo",
+        sentencaFixa: 40,
+        multa: 100000,
+        fianca: 130000,
+        descricao: "Subtrair coisa móvel alheia mediante grave ameaça ou violência à pessoa, ou após reduzir a vítima à impossibilidade de resistência."
+      },
+      {
+        n: "4.2",
+        crime: "Furto a Caixa Eletrônico",
+        sentencaFixa: 35,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Furtar um caixa eletrônico ou registradora."
+      },
+      {
+        n: "4.3",
+        crime: "Extorsão",
+        sentencaFixa: 40,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Constranger alguém, mediante violência ou grave ameaça, com intuito de obter vantagem econômica indevida, obrigando a fazer, tolerar ou deixar de fazer algo."
+      },
+
+      // 5.x - POSSE/ARMA/EQUIPAMENTOS ILEGAIS
+      {
+        n: "5.1",
+        crime: "Posse de peças de armas / Posse de cápsula",
+        sentencaFixa: 35,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Posse de peças de armas ou cápsulas de munição sem autorização."
+      },
+      {
+        n: "5.2",
+        crime: "Posse de componentes de fabricação de armas",
+        sentencaFixa: 35,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Posse de componentes de fabricação de armas ou munição sem autorização."
+      },
+      {
+        n: "5.3",
+        crime: "Tráfico de armas",
+        sentencaFixa: 60,
+        multa: 300000,
+        fianca: 400000,
+        descricao: "3 ou mais armamentos; posse ou comércio ilícito de armas de fogo em quantidade caracterizada como tráfico."
+      },
+      {
+        n: "5.4",
+        crime: "Porte de arma Pesada",
+        sentencaFixa: 45,
+        multa: 200000,
+        fianca: 250000,
+        descricao: "Porte de armamentos pesados como MTAR, AK-47, Parafall, M44, MP5, SIG-SAUER, UZI, entre outros."
+      },
+      {
+        n: "5.5",
+        crime: "Porte de arma Leve",
+        sentencaFixa: 35,
+        multa: 100000,
+        fianca: 150000,
+        descricao: "Porte de armas leves como Five-Seven, .50, Glock, entre outras."
+      },
+      {
+        n: "5.6",
+        crime: "Posse de Munição (-100)",
+        sentencaFixa: 40,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Posse de municiamento inferior a 100 unidades (ex.: munição de HK é legal até 100 unidades)."
+      },
+      {
+        n: "5.7",
+        crime: "Posse de Arma Branca",
+        sentencaFixa: 1,
+        multa: 30000,
+        fianca: 0,
+        descricao: "Posse de qualquer ferramenta que possa ser utilizada como arma corpo-a-corpo de maneira imprudente."
+      },
+      {
+        n: "5.8",
+        crime: "Tráfico de munição (+100)",
+        sentencaFixa: 60,
+        multa: 100000,
+        fianca: 200000,
+        descricao: "Portar 100 ou mais munições, independente do tipo; configura tráfico de munições."
+      },
+      {
+        n: "5.9",
+        crime: "Condução de itens ilegais",
+        sentencaFixa: 50,
+        multa: 100000,
+        fianca: 200000,
+        descricao: "Transportar no porta-malas itens como armas, peças de arma, cápsulas, munição, arma branca, drogas, equipamento restrito, etc., em situação de flagrante."
+      },
+      {
+        n: "5.10",
+        crime: "Tráfico de equipamento balístico",
+        sentencaFixa: 50,
+        multa: 100000,
+        fianca: 200000,
+        descricao: "Portar 5 ou mais coletes ou equipamentos balísticos, caracterizando tráfico de equipamento balístico."
+      },
+
+      // 6.x - NARCOTRÁFICO
+      {
+        n: "6.1",
+        crime: "Aviãozinho (6 a 100)",
+        sentencaFixa: 35,
+        multa: 70000,
+        fianca: 90000,
+        descricao: "Posse de carregamento de drogas para 'delivery' a outros civis (entrega de drogas)."
+      },
+      {
+        n: "6.2",
+        crime: "Posse de Componentes Narcóticos",
+        sentencaFixa: 35,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Posse de matéria-prima usada para fabricação de narcóticos."
+      },
+      {
+        n: "6.3",
+        crime: "Posse de Drogas (1 a 5)",
+        sentencaFixa: 60,
+        multa: 30000,
+        fianca: 0,
+        descricao: "Posse de pequena quantidade de drogas entre 1 e 5 unidades; abaixo de 6, apenas apreender."
+      },
+      {
+        n: "6.4",
+        crime: "Tráfico de drogas",
+        sentencaFixa: 45,
+        multa: 100000,
+        fianca: 200000,
+        descricao: "100 ou mais unidades de droga; considera-se tráfico de drogas."
+      },
+      {
+        n: "6.5",
+        crime: "Associação ao tráfico",
+        sentencaFixa: 35,
+        multa: 50000,
+        fianca: 60000,
+        descricao: "Associar-se duas ou mais pessoas para praticar reiteradamente crimes dos arts. 6.1 e 6.4; aplicado quando dois ou mais cidadãos forem pegos com ao menos 6 entorpecentes."
+      },
+
+      // 7.x - DINHEIRO SUJO
+      {
+        n: "7.1",
+        crime: "Dinheiro sujo ou marcado",
+        sentencaFixa: 0,
+        multa: 500,
+        fianca: 500,
+        descricao: "500 de multa e fiança a cada 1.000 de dinheiro sujo, aplicável a partir de 10.000 de dinheiro sujo."
+      },
+
+      // 8.x - CRIMES CONTRA A HONRA
+      {
+        n: "8.1",
+        crime: "Falsidade Ideológica",
+        sentencaFixa: 30,
+        multa: 125000,
+        fianca: 160000,
+        descricao: "Passar-se por advogado certificado ou funcionário do governo (policiais, membros do Departamento de Justiça etc.)."
+      },
+      {
+        n: "8.2",
+        crime: "Perjúrio",
+        sentencaFixa: 10,
+        multa: 10000,
+        fianca: 13000,
+        descricao: "Crime de falso testemunho ou falsa acusação em prejuízo de outrem ou da justiça."
+      },
+      {
+        n: "8.3",
+        crime: "Formação de quadrilha",
+        sentencaFixa: 50,
+        multa: 150000,
+        fianca: 175000,
+        descricao: "Associação de quatro ou mais pessoas que se dedicam a cometer um ou mais delitos."
+      },
+      {
+        n: "8.4",
+        crime: "Associação Criminosa",
+        sentencaFixa: 30,
+        multa: 65000,
+        fianca: 100000,
+        descricao: "Associação de duas ou mais pessoas que se dedicam a cometer um ou mais delitos."
+      },
+      {
+        n: "8.5",
+        crime: "Difamação",
+        sentencaFixa: 15,
+        multa: 30000,
+        fianca: 50000,
+        descricao: "Imputar a alguém fato ofensivo à sua reputação, com o intuito de prejudicar sua imagem perante terceiros."
+      },
+      {
+        n: "8.6",
+        crime: "Injúria",
+        sentencaFixa: 15,
+        multa: 30000,
+        fianca: 50000,
+        descricao: "Imputação ofensiva contra a dignidade ou decoro de alguém, visando desacreditá-lo na sociedade."
+      },
+      {
+        n: "8.7",
+        crime: "Calúnia",
+        sentencaFixa: 15,
+        multa: 30000,
+        fianca: 50000,
+        descricao: "Atribuir falsamente a alguém a prática de crime, sabendo que a vítima é inocente."
+      },
+
+      // 10.x - INFRAÇÕES / CRIMES MENORES
+      {
+        n: "10.1",
+        crime: "Ameaça",
+        sentencaFixa: 50,
+        multa: 100000,
+        fianca: 130000,
+        descricao: "Intencionalmente colocar outra pessoa com medo de sofrer lesão corporal."
+      },
+      {
+        n: "10.2",
+        crime: "Uso indevido de 190/02",
+        sentencaFixa: 20,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Uso indevido do sistema de emergência ou canal 190, sem necessidade real."
+      },
+      {
+        n: "10.3.1",
+        crime: "Desobediência 1",
+        sentencaFixa: 50,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Deixar de cumprir ordem legal de policial; primeira ocorrência."
+      },
+      {
+        n: "10.3.2",
+        crime: "Desobediência 2",
+        sentencaFixa: 50,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Reincidência na recusa de cumprir ordem legal de policial."
+      },
+      {
+        n: "10.3.3",
+        crime: "Desobediência 3",
+        sentencaFixa: 50,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Nova reincidência em descumprir ordem legal de policial."
+      },
+      {
+        n: "10.3.4",
+        crime: "Desobediência 4",
+        sentencaFixa: 50,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Reincidência grave em descumprir ordem legal ou direção de policial."
+      },
+      {
+        n: "10.4",
+        crime: "Posse de itens ilegais",
+        sentencaFixa: 35,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Posse de ferramentas usadas para crime, como lockpick, capuz, algema etc. (advogados em serviço podem portar algema)."
+      },
+      {
+        n: "10.5",
+        crime: "Assédio",
+        sentencaFixa: 60,
+        multa: 150000,
+        fianca: 200000,
+        descricao: "Condutas abusivas por palavras, gestos ou atos que causem dano à dignidade, integridade física ou psíquica de alguém."
+      },
+      {
+        n: "10.6",
+        crime: "Atentado ao pudor",
+        sentencaFixa: 50,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Expor intencionalmente as partes íntimas ou privadas do corpo em lugar público."
+      },
+      {
+        n: "10.7",
+        crime: "Suborno",
+        sentencaFixa: 25,
+        multa: 50000,
+        fianca: 100000,
+        descricao: "Oferecer dinheiro ou vantagem a servidor público para obter benefício indevido."
+      },
+      {
+        n: "10.8",
+        crime: "Vandalismo",
+        sentencaFixa: 20,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Destruir, inutilizar ou deteriorar coisa alheia."
+      },
+      {
+        n: "10.8.1",
+        crime: "Dano ao patrimônio público",
+        sentencaFixa: 25,
+        multa: 100000,
+        fianca: 130000,
+        descricao: "Causar danos à propriedade do governo."
+      },
+      {
+        n: "10.9",
+        crime: "Abuso de Autoridade",
+        sentencaFixa: 25,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Quando agente público usa o cargo para constranger, ameaçar, agredir ou praticar ato abusivo contra cidadão."
+      },
+      {
+        n: "10.10",
+        crime: "Uso de máscara",
+        sentencaFixa: 10,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Usar máscara ou qualquer objeto que impeça a identificação do cidadão."
+      },
+      {
+        n: "10.11",
+        crime: "Uso de equipamentos restritos",
+        sentencaFixa: 10,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Uso de equipamentos balísticos restritos, como coldres, coletes ou capacetes militares."
+      },
+      {
+        n: "10.12",
+        crime: "Apologia ao crime",
+        sentencaFixa: 45,
+        multa: 100000,
+        fianca: 130000,
+        descricao: "Exaltar publicamente um crime ou seu autor."
+      },
+      {
+        n: "10.13",
+        crime: "Incitação ao crime",
+        sentencaFixa: 10,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Incentivar ou induzir outra pessoa a cometer crime que ainda não ocorreu."
+      },
+      {
+        n: "10.14",
+        crime: "Falsa comunicação de crime",
+        sentencaFixa: 25,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Fazer declaração falsa a funcionário da lei ou ao 190 para comunicar crime inexistente."
+      },
+      {
+        n: "10.15",
+        crime: "Vadiagem",
+        sentencaFixa: 10,
+        multa: 5000,
+        fianca: 10000,
+        descricao: "Permanecer em local público sem propósito aparente, desobedecendo ordem legal de dispersão."
+      },
+      {
+        n: "10.16",
+        crime: "Intoxicação pública",
+        sentencaFixa: 10,
+        multa: 4000,
+        fianca: 10000,
+        descricao: "Estar visivelmente embriagado ou sob efeito de drogas em local público, com comportamento inadequado."
+      },
+      {
+        n: "10.17",
+        crime: "Perturbação da ordem",
+        sentencaFixa: 0,
+        multa: 5000,
+        fianca: 0,
+        descricao: "Comportar-se de maneira disruptiva em público sem causar sério perigo, mas afetando a ordem."
+      },
+      {
+        n: "10.18",
+        crime: "Perturbação do sossego alheio",
+        sentencaFixa: 10,
+        multa: 30000,
+        fianca: 50000,
+        descricao: "Perturbar o sossego alheio com gritaria, algazarra ou ruídos excessivos."
+      },
+      {
+        n: "10.19",
+        crime: "Omissão de socorro",
+        sentencaFixa: 10,
+        multa: 30000,
+        fianca: 50000,
+        descricao: "Deixar de prestar assistência, quando possível, a pessoa em perigo ou não acionar autoridade pública."
+      },
+      {
+        n: "10.20",
+        crime: "Tráfico de influência",
+        sentencaFixa: 10,
+        multa: 30000,
+        fianca: 50000,
+        descricao: "Aproveitar-se de posição ou conexões com autoridades para obter favores ou benefícios indevidos."
+      },
+      {
+        n: "10.21",
+        crime: "Obstrução de Justiça",
+        sentencaFixa: 20,
+        multa: 50000,
+        fianca: 80000,
+        descricao: "Praticar ato ou omissão planejada para causar dificuldades em investigações policiais ou judiciais."
+      },
+      {
+        n: "10.22",
+        crime: "Peculato",
+        sentencaFixa: 60,
+        multa: 100000,
+        fianca: 200000,
+        descricao: "Apropriar-se funcionário público de dinheiro, valor ou bem móvel de que tem a posse em razão do cargo, ou desviá-lo em proveito próprio ou alheio."
+      },
+
+      // 11.x - VIOLAÇÕES COMUNS NO TRÂNSITO
+      {
+        n: "11.1",
+        crime: "Tentativa de Fuga",
+        sentencaFixa: 35,
+        multa: 50000,
+        fianca: 70000,
+        descricao: "Desobedecer ordem de parada de oficial ou evadir-se de guarnição policial."
+      },
+      {
+        n: "11.2",
+        crime: "Condução Imprudente",
+        sentencaFixa: 10,
+        multa: 30000,
+        fianca: 60000,
+        descricao: "Condução descuidada ou sem o devido cuidado e atenção, gerando risco a terceiros."
+      },
+      {
+        n: "11.3",
+        crime: "Dirigir na contra mão",
+        sentencaFixa: 1,
+        multa: 30000,
+        fianca: 0,
+        descricao: "Trafegar pelo sentido contrário da via, contra o fluxo de tráfego."
+      },
+      {
+        n: "11.4",
+        crime: "Alta Velocidade",
+        sentencaFixa: 1,
+        multa: 50000,
+        fianca: 0,
+        descricao: "Trafegar com veículo em velocidade superior a 200 km/h."
+      },
+      {
+        n: "11.5",
+        crime: "Poluição Sonora",
+        sentencaFixa: 10,
+        multa: 50000,
+        fianca: 100000,
+        descricao: "Buzinas, som alto ou motores que causem incômodo público; deve ser dada oportunidade de cessar o barulho."
+      },
+      {
+        n: "11.6",
+        crime: "Corridas ilegais",
+        sentencaFixa: 1,
+        multa: 50000,
+        fianca: 0,
+        descricao: "Participar ou organizar corridas ilegais em vias públicas ou rurais."
+      },
+      {
+        n: "11.7",
+        crime: "Sem capacete",
+        sentencaFixa: 5,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Conduzir motocicleta sem capacete ou vestuário de proteção."
+      },
+      {
+        n: "11.8",
+        crime: "Suspensão veicular alterada",
+        sentencaFixa: 1,
+        multa: 50000,
+        fianca: 65000,
+        descricao: "Modificar suspensão de veículo ou moto fora do padrão original, exceto veículos rebaixados de fábrica legalizados."
+      },
+
+      // 12.x - INFRAÇÕES DE TRÂNSITO
+      {
+        n: "12.1",
+        crime: "Uso Excessivo de insulfilm",
+        sentencaFixa: 0,
+        multa: 25000,
+        fianca: 0,
+        descricao: "Utilizar insulfilm com tonalidade tão escura que impeça a visualização do ocupante (acima de 30%)."
+      },
+      {
+        n: "12.2",
+        crime: "Veículo Muito Danificado",
+        sentencaFixa: 0,
+        multa: 25000,
+        fianca: 0,
+        descricao: "Conduzir veículo fortemente danificado; reboque obrigatório e possível multa."
+      },
+      {
+        n: "12.3",
+        crime: "Veículo ilegalmente estacionado",
+        sentencaFixa: 0,
+        multa: 30000,
+        fianca: 0,
+        descricao: "Estacionar em vaga proibida, faixa de incêndio, até 5m de hidrante ou abandonar veículo em via pública."
+      },
+      {
+        n: "12.4",
+        crime: "Homicídio Culposo no Trânsito",
+        sentencaFixa: 20,
+        multa: 45000,
+        fianca: 60000,
+        descricao: "Tirar a vida de outra pessoa no trânsito, mesmo sem intenção, inclusive em acidentes."
+      },
+      {
+        n: "12.5",
+        crime: "Blindagem no pneu",
+        sentencaFixa: 50,
+        multa: 150000,
+        fianca: 300000,
+        descricao: "Alterar a resistência do pneu com blindagem para benefício próprio, sem ser funcionário público."
+      },
+
+      // 14.x - ATENUANTES
+      {
+        n: "14.1",
+        crime: "Réu Primário",
+        sentencaFixa: 0,
+        multa: 0,
+        fianca: 0,
+        descricao: "Redução de 20% na pena total quando o cidadão está sendo preso pela primeira vez, apenas com advogado presente."
+      },
+      {
+        n: "14.2",
+        crime: "Réu Confesso",
+        sentencaFixa: 0,
+        multa: 0,
+        fianca: 0,
+        descricao: "Redução de 20% na pena total quando o réu confessa seus crimes espontaneamente, não aplicável em flagrante delito; sem direito a fiança se houver desacato."
+      },
+      {
+        n: "14.3",
+        crime: "Delação Premiada",
+        sentencaFixa: 0,
+        multa: 0,
+        fianca: 0,
+        descricao: "Desconto ou até isenção de pena para quem assumir o crime e oferecer informações concretas sobre organizações criminosas; a critério do policial."
+      },
+      {
+        n: "14.4",
+        crime: "Advogado Constituído",
+        sentencaFixa: 0,
+        multa: 0,
+        fianca: 0,
+        descricao: "Entre 30% e 40% de redução de pena e direito à fiança para quem constitui advogado; obrigatório cumprir ao menos 30% da pena."
+      },
+
+      // 15.x - AGRAVANTES E CRIMES MÉDIOS
+      {
+        n: "15.1.1",
+        crime: "Desacato 1",
+        sentencaFixa: 50,
+        multa: 150000,
+        fianca: 0,
+        descricao: "Desacato, desobediência ou desrespeito perante funcionário público; inafiançável, agravante acumulativo."
+      },
+      {
+        n: "15.1.2",
+        crime: "Desacato 2",
+        sentencaFixa: 0,
+        multa: 150000,
+        fianca: 0,
+        descricao: "Reincidência em desacato; inafiançável, com aumento de 30% na pena."
+      },
+      {
+        n: "15.1.3",
+        crime: "Desacato 3",
+        sentencaFixa: 0,
+        multa: 150000,
+        fianca: 0,
+        descricao: "Nova reincidência em desacato; inafiançável, agravante acumulativo com +30% na pena."
+      },
+      {
+        n: "15.1.4",
+        crime: "Desacato 4",
+        sentencaFixa: 0,
+        multa: 150000,
+        fianca: 0,
+        descricao: "Reincidência extrema em desacato; casos extremos podem levar à pena máxima +30%."
+      },
+      {
+        n: "15.2",
+        crime: "Resistência à Prisão",
+        sentencaFixa: 20,
+        multa: 50000,
+        fianca: 0,
+        descricao: "Usar força para impedir prisão, algemação ou condução à custódia policial."
+      },
+      {
+        n: "15.3",
+        crime: "Réu Reincidente",
+        sentencaFixa: 10,
+        multa: 0,
+        fianca: 0,
+        descricao: "Cometer o mesmo crime mais de uma vez; acrescenta 10 meses à pena."
+      },
+      {
+        n: "15.4",
+        crime: "Cúmplice",
+        sentencaFixa: 0,
+        multa: 15000,
+        fianca: 0,
+        descricao: "Quem, dolosamente, presta auxílio material ou moral à prática de fato doloso por outrem."
+      },
+      {
+        n: "15.5",
+        crime: "Colisão Proposital a Viatura",
+        sentencaFixa: 0,
+        multa: 20000,
+        fianca: 0,
+        descricao: "Ato de colidir propositalmente veículo pessoal contra viatura policial."
+      },
+      {
+        n: "15.6",
+        crime: "Contrabando",
+        sentencaFixa: 0,
+        multa: 200000,
+        fianca: 0,
+        descricao: "Importar ou exportar mercadoria proibida, ou iludir pagamento de impostos devidos."
+      },
+      {
+        n: "15.7",
+        crime: "Desmanche de Veículos",
+        sentencaFixa: 0,
+        multa: 70000,
+        fianca: 0,
+        descricao: "Desmontar veículos automotores de forma ilegal para obter peças ou lucro."
+      },
+      {
+        n: "15.8",
+        crime: "Disparo de Arma",
+        sentencaFixa: 0,
+        multa: 50000,
+        fianca: 0,
+        descricao: "Disparar arma de fogo em lugar habitado, via pública ou em direção a ela, sem finalidade de outro crime."
+      },
+
+      // 16.x - OUTROS CRIMES
+      {
+        n: "16.1",
+        crime: "Descaminho",
+        sentencaFixa: 0,
+        multa: 100000,
+        fianca: 0,
+        descricao: "Iludir, no todo ou em parte, pagamento de imposto devido pela entrada, saída ou consumo de mercadoria."
+      },
+      {
+        n: "16.2",
+        crime: "Impedir o Fluxo do Tráfego",
+        sentencaFixa: 0,
+        multa: 15000,
+        fianca: 0,
+        descricao: "Usar veículo para interromper, restringir ou perturbar circulação em via sem autorização do órgão competente."
+      },
+      {
+        n: "16.5",
+        crime: "Ocultação de Provas",
+        sentencaFixa: 0,
+        multa: 50000,
+        fianca: 0,
+        descricao: "Destruir, suprimir ou ocultar documento ou prova em benefício próprio ou de outrem, ou para prejudicar terceiro."
+      },
+      {
+        n: "16.6",
+        crime: "Zaralho em Recrutamento Policial",
+        sentencaFixa: 0,
+        multa: 100000,
+        fianca: 0,
+        descricao: "Realizar brincadeiras, agir de má-fé e participar de concurso público policial apenas para atrapalhar."
+      }
     ];
 
     // Todas as funções JavaScript mantidas iguais (filtrarCrimes, copiarRelatorio, carregarCrimes, gerarRelatorio, calcularPena)
