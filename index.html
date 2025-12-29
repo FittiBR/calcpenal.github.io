@@ -18,8 +18,7 @@
     }
 
     .header {
-      width: 90vw;
-      max-width: 900px;
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -32,15 +31,13 @@
     }
 
     .container {
-      width: 90vw !important;
+      width: 90%;
       max-width: 900px;
       padding: 20px;
       border-radius: 10px;
       background: #121212;
       box-shadow: 0 0 15px rgba(92, 158, 255, 0.5);
       border: 2px solid #5C9EFF;
-      margin: 0 auto;
-      box-sizing: border-box;
     }
 
     h2 {
@@ -60,24 +57,29 @@
       flex-wrap: wrap;
       justify-content: space-between;
       gap: 20px;
-      width: 100%;
     }
 
-    .crime-section, .form-section, .report-section {
-      width: 100%;
-      max-width: 100%;
+    .form-section,
+    .report-section {
+      flex: 1;
+      min-width: 300px;
       padding: 15px;
       background: #1E1E1E;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(92, 158, 255, 0.3);
       border: 2px solid #5C9EFF;
-      box-sizing: border-box;
-      flex: 1;
-      min-width: 300px;
     }
 
-    .crime-container {
+    .crime-section {
       width: 100%;
+      padding: 15px;
+      background: #1E1E1E;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(92, 158, 255, 0.3);
+      border: 2px solid #5C9EFF;
+    }
+
+.crime-container {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
@@ -87,7 +89,6 @@
       border: 2px solid #5C9EFF;
       background: #222;
       border-radius: 5px;
-      box-sizing: border-box;
     }
 
     .crime {
@@ -107,16 +108,18 @@
     .atenuantes-section {
       width: 100%;
       margin-top: 20px;
-      padding: 15px;
+      padding: 10px;
       background: #1E1E1E;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(92, 158, 255, 0.3);
+      max-height: 120px;
+      overflow-y: auto;
       border: 2px solid #5C9EFF;
-      box-sizing: border-box;
     }
 
-    #resultado, #relatorioDados {
-      width: 100% !important;
+    #resultado,
+    #relatorioDados {
+      width: 95%;
       height: 80px;
       margin-top: 10px;
       resize: vertical;
@@ -128,22 +131,6 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(92, 158, 255, 0.3);
       line-height: 1.5;
-      box-sizing: border-box;
-      display: block;
-      margin: 10px auto;
-    }
-
-    #searchCrime {
-      width: 100% !important;
-      padding: 10px;
-      border: 2px solid #5C9EFF;
-      border-radius: 5px;
-      background: #121212;
-      color: white;
-      outline: none;
-      font-size: 14px;
-      margin-bottom: 10px;
-      box-sizing: border-box;
     }
 
     .input-group {
@@ -167,7 +154,6 @@
       color: white;
       outline: none;
       font-size: 14px;
-      box-sizing: border-box;
     }
 
     button {
@@ -182,7 +168,6 @@
       border-radius: 5px;
       cursor: pointer;
       transition: 0.3s;
-      box-sizing: border-box;
     }
 
     button:hover {
@@ -198,30 +183,32 @@
       .crime-container {
         grid-template-columns: repeat(2, 1fr);
       }
-
-      .container, .header, .crime-section, .form-section, .report-section {
-        width: 95vw !important;
-      }
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <img src="OAB_BC_SEM_FUNDO.png" alt="OAB Santa Catarina">
+  <div>
+    <div class="header">
+      <img src="OAB_BC_SEM_FUNDO.png" alt="OAB Santa Catarina">
+    </div>
   </div>
 
   <div class="container">
     <h2 style="font-family:cursive;">Calculadora Penal - OAB SC</h2>
     <div class="main-container">
       <div class="top-section">
-        <!-- SEÇÃO CRIMES -->
         <div class="crime-section">
           <h3>Crimes</h3>
-          <input type="text" id="searchCrime" placeholder="Pesquisar crime..." oninput="filtrarCrimes()">
+          <input
+            type="text"
+            id="searchCrime"
+            placeholder="Pesquisar crime..."
+            oninput="filtrarCrimes()"
+            style="width: 100%; padding: 10px; border: 2px solid #5C9EFF; border-radius: 5px; background: #121212; color: white; margin-bottom: 10px;"
+          >
           <div class="crime-container" id="crimes"></div>
         </div>
 
-        <!-- SEÇÃO ATENUANTES -->
         <div class="crime-section">
           <h3>Atenuantes</h3>
           <div class="checkbox-group">
@@ -235,7 +222,6 @@
           <textarea id="resultado" readonly>Pena Final: -- Meses | Multa: -- | Fiança: --</textarea>
         </div>
 
-        <!-- SEÇÃO RELATÓRIO -->
         <div class="report-section">
           <h2>Relatório - OAB</h2>
           <div class="form-section">
@@ -265,30 +251,33 @@
             </div>
             <div class="input-group">
               <label for="rgOficial">RG do Oficial</label>
-              <input type="text" id="rgOficial" placeholder="Digite o RG do oficial">
+              <input type="text" id="rgOficial" placeholder="Digite o RG do cliente">
             </div>
-            <div class="input-group" style="display: flex; align-items: flex-start; gap: 10px; text-align: left;">
+
+            <div class="input-group" style="display: flex; align-items: left; gap: 10px; text-align: left;">
               <label for="Porte">Porte de armas:</label>
               <div style="display: flex; flex-direction: column; gap: 5px;">
-                <label style="display: flex; align-items: center; gap: 5px;">
+                <label for="PorteSim" style="display: flex; align-items: center; gap: 5px;">
                   <input type="radio" id="PorteSim" name="Porte" value="Sim"> Sim
                 </label>
-                <label style="display: flex; align-items: center; gap: 5px;">
-                  <input type="radio" id="PorteNao" name="Porte" value="Não"> Não
+                <label for="PorteNao" style="display: flex; align-items: center; gap: 5px;">
+                  <input type="radio" id="PorteNao" name="Porte" value="Nao"> Não
                 </label>
               </div>
             </div>
-            <div class="input-group" style="display: flex; align-items: flex-start; gap: 10px; text-align: left;">
+
+            <div class="input-group" style="display: flex; align-items: left; gap: 10px; text-align: left;">
               <label for="Fianca">Pagou a fiança:</label>
               <div style="display: flex; flex-direction: column; gap: 5px;">
-                <label style="display: flex; align-items: center; gap: 5px;">
+                <label for="FiancaSim" style="display: flex; align-items: center; gap: 5px;">
                   <input type="radio" id="FiancaSim" name="Fianca" value="Sim"> Sim
                 </label>
-                <label style="display: flex; align-items: center; gap: 5px;">
-                  <input type="radio" id="FiancaNao" name="Fianca" value="Não"> Não
+                <label for="FiancaNao" style="display: flex; align-items: center; gap: 5px;">
+                  <input type="radio" id="FiancaNao" name="Fianca" value="Nao"> Não
                 </label>
               </div>
             </div>
+
             <div class="input-group">
               <label for="relatorioDados">Relatório Gerado</label>
               <textarea id="relatorioDados" readonly></textarea>
@@ -1150,10 +1139,10 @@
       }
     ];
 
-    // Todas as funções JavaScript mantidas iguais (filtrarCrimes, copiarRelatorio, carregarCrimes, gerarRelatorio, calcularPena)
     function filtrarCrimes() {
       let input = document.getElementById("searchCrime").value.toLowerCase();
       let crimesLista = document.getElementsByClassName("crime");
+
       for (let crime of crimesLista) {
         let nomeCrime = crime.innerText.toLowerCase();
         crime.style.display = nomeCrime.includes(input) ? "block" : "none";
@@ -1163,6 +1152,7 @@
     function copiarRelatorio() {
       let relatorio = document.getElementById("relatorioDados").value;
       let textoFormatado = `\n\n${relatorio}\n\n`;
+
       navigator.clipboard.writeText(textoFormatado).then(() => {
         alert("Relatório copiado com formatação!");
       }).catch(err => {
@@ -1181,7 +1171,6 @@
     }
 
     function gerarRelatorio() {
-      // Função completa mantida igual ao original
       let nomeAdvogado = document.getElementById("advogadoNome").value || "Não informado";
       let rgAdvogado = document.getElementById("rgAdvogado").value || "Não informado";
       let nomeCliente = document.getElementById("cliente").value || "Não informado";
@@ -1234,11 +1223,14 @@ ${listaAtenuantes}
 📝 ADVOGADO: ${nomeAdvogado} | RG: ${rgAdvogado}
 \`\`\`
 `.trim();
+
       document.getElementById("relatorioDados").value = relatorioTexto;
     }
 
     function calcularPena() {
+      // lista de códigos (n) considerados inafiançáveis
       const artigosInafiançaveis = ["1.1", "1.2", "1.3", "2.2", "5.3", "15.1.1", "15.1.2", "15.1.3", "15.1.4"];
+
       let selecionados = crimes.filter(crime =>
         document.getElementById(`crime${crime.n}`) &&
         document.getElementById(`crime${crime.n}`).checked
